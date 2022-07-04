@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class AbstractProjectile : MonoBehaviour
 {
-
     [SerializeField]
     private float _impulse = 10f, _lifeTime = 3f;
     private Rigidbody _rigidBody;
@@ -14,6 +14,22 @@ public abstract class AbstractProjectile : MonoBehaviour
     {
         transform.position = muzzle.position;
         _rigidBody.AddForce(muzzle.forward * _impulse, ForceMode.Impulse);
-        Destroy(gameObject, _lifeTime);
+        StartCoroutine(DespawnCoroutine());
     }
+    private IEnumerator DespawnCoroutine()
+    {
+        yield return new WaitForSeconds(_lifeTime);
+        Despawn();
+    }
+    protected void Despawn()
+    {
+        StopAllCoroutines();
+        Destroy(gameObject);
+    }
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.TryGetComponent(out HitTarget hitTarget))
+            OnHit(hitTarget.Root, collision);
+    }
+    protected abstract void OnHit(Transform root, Collision collision);
 }
