@@ -205,11 +205,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rightHand:
-    _key: 19
+    _equipKey: 19
+    _mouseButton: 1
     _handTransform: {fileID: 1199564105}
     _weapon: {fileID: 0}
   _leftHand:
-    _key: 31
+    _equipKey: 31
+    _mouseButton: 0
     _handTransform: {fileID: 443746419}
     _weapon: {fileID: 0}
   _camera: {fileID: 963194227}
@@ -618,7 +620,7 @@ PrefabInstance:
     - target: {fileID: 2382710403660629661, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: _weaponPrefab
       value: 
-      objectReference: {fileID: 3122517187780062322, guid: fb95c5b071ab79b458d8bbd83a2dd770, type: 3}
+      objectReference: {fileID: 5348787930873863637, guid: aedf249531c5e0b46a75d6d907f720e3, type: 3}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_RootOrder
       value: 3

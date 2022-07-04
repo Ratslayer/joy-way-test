@@ -1,13 +1,20 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class EquipmentInventory : MonoBehaviour
 {
+    private enum MouseButton
+    {
+        Left,
+        Right
+    }
     [Serializable]
     private class HandData
     {
-        public Key _key;
+        public Key _equipKey;
+        public MouseButton _mouseButton;
         public Transform _handTransform;
         public Weapon _weapon;
         private EquipmentInventory _inventory;
@@ -17,9 +24,21 @@ public class EquipmentInventory : MonoBehaviour
         }
         public void UpdateWeapon()
         {
-            if (!Keyboard.current[_key].wasPressedThisFrame)
-                return;
-            //update weapon
+            if (Keyboard.current[_equipKey].wasPressedThisFrame)
+                EquipWeapon();
+            if (Mouse.current.rightButton.wasPressedThisFrame
+                && _mouseButton == MouseButton.Right
+                || Mouse.current.leftButton.wasPressedThisFrame
+                && _mouseButton == MouseButton.Left)
+                Attack();
+        }
+        private void Attack()
+        {
+            if (_weapon)
+                _weapon.Attack();
+        }
+        private void EquipWeapon()
+        {
             if (_weapon)
             {
                 _weapon.transform.SetParent(null, true);
