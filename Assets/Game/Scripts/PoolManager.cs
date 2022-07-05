@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : AbstractManager<SpawnManager>
+public class PoolManager : AbstractManager<PoolManager>
 {
     private readonly Dictionary<GameObject, List<GameObject>> _instances = new Dictionary<GameObject, List<GameObject>>();
     public GameObject Spawn(GameObject prefab, Transform parent)
