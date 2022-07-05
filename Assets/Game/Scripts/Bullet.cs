@@ -3,7 +3,7 @@
 public class Bullet : AbstractProjectile
 {
     [SerializeField]
-    private int _damage = 20;
+    private float _damage = 20;
     protected override void OnHit(Transform root, Collision collision)
     {
         if (root.TryGetComponent(out Health health))
