@@ -1,10 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class Health : MonoBehaviour
 {
-    [SerializeField]
-    private Key _fullHealKey;
     [SerializeField]
     private float _maxHealth = 1000;
     private float _currentHealth;
@@ -17,12 +15,7 @@ public class Health : MonoBehaviour
     {
         HealToFull();
     }
-    private void Update()
-    {
-        if (Keyboard.current[_fullHealKey].wasPressedThisFrame)
-            HealToFull();
-    }
-    private void HealToFull()
+    public void HealToFull()
     {
         _currentHealth = _maxHealth;
         HealedToFull?.Invoke();

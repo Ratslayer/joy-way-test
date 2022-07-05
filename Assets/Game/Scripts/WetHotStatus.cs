@@ -21,7 +21,7 @@ public class WetHotStatus : MonoBehaviour
     }
     public event Action<Status> StatusChanged;
     private Status _lastStatus;
-    private Status CurrentStatus
+    public Status CurrentStatus
        => _remainingBurnDuration > 0f
            ? Status.Burning
            : _currentWetness > 0
