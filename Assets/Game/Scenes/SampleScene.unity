@@ -564,7 +564,7 @@ PrefabInstance:
     - target: {fileID: 2382710403660629661, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: _weaponPrefab
       value: 
-      objectReference: {fileID: 5612086302626490213, guid: ec5c8832d9d9c1a4785cc5ba90399e5c, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_RootOrder
       value: 8

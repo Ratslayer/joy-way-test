@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.Serialization;
 
 public class EquipmentInventory : MonoBehaviour
@@ -16,26 +17,27 @@ public class EquipmentInventory : MonoBehaviour
         public Key _equipKey;
         public MouseButton _mouseButton;
         public Transform _handTransform;
-        public Weapon _weapon;
+        public AbstractWeapon _weapon;
         private EquipmentInventory _inventory;
         public void Init(EquipmentInventory inventory)
         {
             _inventory = inventory;
         }
+        private ButtonControl AttackButton
+            => _mouseButton == MouseButton.Left
+                ? Mouse.current.leftButton : Mouse.current.rightButton;
         public void UpdateWeapon()
         {
             if (Keyboard.current[_equipKey].wasPressedThisFrame)
                 EquipWeapon();
-            if (Mouse.current.rightButton.wasPressedThisFrame
-                && _mouseButton == MouseButton.Right
-                || Mouse.current.leftButton.wasPressedThisFrame
-                && _mouseButton == MouseButton.Left)
-                Attack();
-        }
-        private void Attack()
-        {
             if (_weapon)
-                _weapon.Attack();
+            {
+                var button = AttackButton;
+                if (button.wasPressedThisFrame)
+                    _weapon.BeginAttack();
+                else if (button.wasReleasedThisFrame)
+                    _weapon.EndAttack();
+            }
         }
         private void EquipWeapon()
         {
@@ -58,7 +60,7 @@ public class EquipmentInventory : MonoBehaviour
     private HandData _rightHand, _leftHand;
     [SerializeField]
     private Camera _camera;
-    private Weapon _targetWeapon;
+    private AbstractWeapon _targetWeapon;
     private void Start()
     {
         _rightHand.Init(this);
@@ -70,7 +72,7 @@ public class EquipmentInventory : MonoBehaviour
         _targetWeapon = null;
         var hits = Physics.RaycastAll(_camera.transform.position, _camera.transform.forward);
         foreach (var hit in hits)
-            if (hit.collider.TryGetComponent<Weapon>(out var weapon))
+            if (hit.collider.TryGetComponent<AbstractWeapon>(out var weapon))
             {
                 _targetWeapon = weapon;
                 break;

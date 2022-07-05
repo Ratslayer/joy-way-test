@@ -3,10 +3,10 @@
 public class WeaponSpawner : MonoBehaviour
 {
     [SerializeField]
-    private Weapon _weaponPrefab;
+    private AbstractWeapon _weaponPrefab;
     [SerializeField]
     private Transform _weaponAnchor;
-    private Weapon _weaponInstance;
+    private AbstractWeapon _weaponInstance;
     private void Awake()
     {
         _weaponInstance = Instantiate(_weaponPrefab);
