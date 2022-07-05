@@ -13,7 +13,7 @@ public abstract class AbstractProjectile : MonoBehaviour
     public void Shoot(Transform muzzle)
     {
         transform.position = muzzle.position;
-        _rigidBody.AddForce(muzzle.forward * _impulse, ForceMode.Impulse);
+        _rigidBody.velocity = muzzle.forward * _impulse;
         StartCoroutine(DespawnCoroutine());
     }
     private IEnumerator DespawnCoroutine()
@@ -24,7 +24,7 @@ public abstract class AbstractProjectile : MonoBehaviour
     protected void Despawn()
     {
         StopAllCoroutines();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {

@@ -10,7 +10,7 @@ public class ProjectileWeapon : AbstractWeapon
     public override void BeginAttack()
     {
         base.BeginAttack();
-        var projectile = Instantiate(_projectilePrefab);
+        var projectile = SpawnManager.Instance.Spawn(_projectilePrefab);
         projectile.Shoot(_muzzleTransform);
     }
 }
