@@ -30,6 +30,7 @@ public abstract class AbstractProjectile : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out HitTarget hitTarget))
             OnHit(hitTarget.Root, collision);
+        Despawn();
     }
     protected abstract void OnHit(Transform root, Collision collision);
 }

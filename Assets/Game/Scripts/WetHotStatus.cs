@@ -9,54 +9,70 @@ public class WetHotStatus : MonoBehaviour
 
     private float _remainingBurnDuration = 0f;
     private int _currentWetness = 0;
-    public event Action BurnBegan, BurnEnded, WetBegan, WetEnded;
     public event Action<float> BurnedForDuration;
     private bool IsBurning => _remainingBurnDuration > 0f;
+    private bool IsWet => _currentWetness > 0;
+    #region Status
+    public enum Status
+    {
+        None,
+        Wet,
+        Burning
+    }
+    public event Action<Status> StatusChanged;
+    private Status _lastStatus;
+    private Status CurrentStatus
+       => _remainingBurnDuration > 0f
+           ? Status.Burning
+           : _currentWetness > 0
+               ? Status.Wet
+               : Status.None;
+    private void BeginStatusChangeCheck() => _lastStatus = CurrentStatus;
+    private void EndStatusChangeCheck()
+    {
+        var current = CurrentStatus;
+        if (_lastStatus != current)
+            StatusChanged?.Invoke(current);
+    }
+    #endregion
+
     private void Update()
     {
         if (IsBurning)
         {
+            BeginStatusChangeCheck();
             var time = Mathf.Min(Time.deltaTime, _remainingBurnDuration);
             BurnedForDuration?.Invoke(time);
             _remainingBurnDuration -= time;
             if (_remainingBurnDuration < Mathf.Epsilon)
-                EndBurn();
+                StopBurn();
+            EndStatusChangeCheck();
         }
     }
+
     public void AddWetness(int value)
     {
+        if (value == 0)
+            return;
+        BeginStatusChangeCheck();
         if (IsBurning)
         {
-            EndBurn();
-            _currentWetness = value;
-            BeginWet();
-        }
-        else _currentWetness = Mathf.Min(_currentWetness + value, _maxWetness);
-    }
-    public void AddHotness(int value)
-    {
-        if (_currentWetness > 0)
-        {
-            _currentWetness = Mathf.Max(_currentWetness - value, 0);
-            if (_currentWetness == 0)
+            if (value > 0)
             {
-                EndWet();
-                BeginBurn();
+                _currentWetness = value;
+                StopBurn();
             }
+            else UpdateBurnDuration();
         }
         else
         {
-            if (!IsBurning)
-                BeginBurn();
-            _remainingBurnDuration = _maxBurnDuration;
+            _currentWetness = Mathf.Clamp(_currentWetness + value, 0, _maxWetness);
+            if (value < 0 && !IsWet)
+                UpdateBurnDuration();
         }
+        EndStatusChangeCheck();
     }
-    private void BeginWet() => WetBegan?.Invoke();
-    private void EndWet() => WetEnded?.Invoke();
-    private void BeginBurn() => BurnBegan?.Invoke();
-    private void EndBurn()
-    {
-        _remainingBurnDuration = 0f;
-        BurnEnded?.Invoke();
-    }
+    private void StopBurn() => _remainingBurnDuration = 0f;
+    private void UpdateBurnDuration() => _remainingBurnDuration = _maxBurnDuration;
+
 }
