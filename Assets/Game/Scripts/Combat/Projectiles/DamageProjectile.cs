@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using static WetHotStatus;
-public class Bullet : AbstractProjectile
+public class DamageProjectile : AbstractProjectile
 {
     [SerializeField]
     private float _damage = 20, _damageAmplification = 10f;

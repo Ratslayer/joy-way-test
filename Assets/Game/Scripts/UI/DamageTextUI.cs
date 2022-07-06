@@ -1,6 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
-public class FloatUpAndFadeTextOnEnable : MonoBehaviour
+public class DamageTextUI : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _text;

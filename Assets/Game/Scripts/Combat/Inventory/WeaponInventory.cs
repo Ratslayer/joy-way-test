@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 [RequireComponent(typeof(WeaponInteraction))]
-public class EquipmentInventory : MonoBehaviour
+public class WeaponInventory : MonoBehaviour
 {
     private enum MouseButton
     {

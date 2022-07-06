@@ -579,6 +579,7 @@ GameObject:
   - component: {fileID: 356521044}
   - component: {fileID: 356521043}
   - component: {fileID: 356521042}
+  - component: {fileID: 356521048}
   - component: {fileID: 356521046}
   - component: {fileID: 356521045}
   - component: {fileID: 356521047}
@@ -602,10 +603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actions: {fileID: -944628639613478452, guid: 841475cd780b09e4d878df311e318b96, type: 3}
-  _moveAction: Move
+  _moveActionName: Move
   _moveSpeed: 3
-  _lookSpeed: 100
-  _cameraTransform: {fileID: 239161952}
 --- !u!143 &356521043
 CharacterController:
   m_ObjectHideFlags: 0
@@ -687,6 +686,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: 60
+--- !u!114 &356521048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356521041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d72938132e44234fbbfe64c457cd4c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraTransform: {fileID: 239161952}
+  _lookSpeed: 100
 --- !u!1 &434185806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c51f44dd04c7c2444913d30ca28f9d49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2107,7 +2120,7 @@ Transform:
   m_GameObject: {fileID: 1644467727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.2754576, y: -2.546046, z: -0.47949854}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 1763044396}
   m_RootOrder: 2

@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+//manages spawned objects based on their original prefab
 public class PoolManager : AbstractManager<PoolManager>
 {
+    //key: prefab
+    //value: all existing instances, both active and inactive
     private readonly Dictionary<GameObject, List<GameObject>> _instances = new Dictionary<GameObject, List<GameObject>>();
+    //fetches first inactive instance of this prefab
+    //if none exist, creates a new one
     public GameObject Spawn(GameObject prefab, Transform parent)
     {
         if (prefab == null)
