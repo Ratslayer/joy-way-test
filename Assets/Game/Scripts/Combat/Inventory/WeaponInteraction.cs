@@ -5,6 +5,8 @@ public class WeaponInteraction : MonoBehaviour
 {
     [SerializeField]
     private Camera _camera;
+    [SerializeField]
+    private float _rayRadius = 0.1f;
     private AbstractWeapon _targetWeapon;
     public event Action<AbstractWeapon> WeaponChanged;
     public AbstractWeapon CurrentWeapon => _targetWeapon;
@@ -13,7 +15,7 @@ public class WeaponInteraction : MonoBehaviour
         var previousWeapon = _targetWeapon;
         _targetWeapon = null;
         //find first weapon we are looking at
-        var hits = Physics.RaycastAll(_camera.transform.position, _camera.transform.forward);
+        var hits = Physics.SphereCastAll(_camera.transform.position, _rayRadius, _camera.transform.forward);
         foreach (var hit in hits)
             if (hit.collider.TryGetComponent<AbstractWeapon>(out var weapon))
             {
