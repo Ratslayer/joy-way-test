@@ -17,17 +17,17 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private float _moveSpeed = 3;
     private CharacterController _characterController;
-    private Vector3 _moveInputDir;
+    private Vector2 _moveInput;
     private InputAction _moveAction;
     //called on input change only
     private void Move(CallbackContext context)
     {
-        var moveInput = context.ReadValue<Vector2>();
-        _moveInputDir = transform.forward * moveInput.y + transform.right * moveInput.x;
+        _moveInput = context.ReadValue<Vector2>();
     }
     private void Update()
     {
-        _characterController.Move(_moveInputDir * _moveSpeed * Time.deltaTime);
+        var moveDir = transform.forward * _moveInput.y + transform.right * _moveInput.x;
+        _characterController.Move(moveDir * _moveSpeed * Time.deltaTime);
     }
     private void Awake()
     {
