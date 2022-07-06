@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 public class PoolManager : AbstractManager<PoolManager>
 {
     private readonly Dictionary<GameObject, List<GameObject>> _instances = new Dictionary<GameObject, List<GameObject>>();
