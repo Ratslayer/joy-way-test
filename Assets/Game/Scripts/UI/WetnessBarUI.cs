@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static WetHotStatus;
 public class WetnessBarUI : AbstractBarUI
 {
     [SerializeField]
@@ -7,14 +8,17 @@ public class WetnessBarUI : AbstractBarUI
     {
         UpdateValues(_status.CurrentWetness, _status.MaxWetness);
     }
+    private void OnStatusChange(Status status) => OnWetnessChange();
     private void OnEnable()
     {
         _status.WetnessChanged += OnWetnessChange;
+        _status.StatusChanged += OnStatusChange;
         OnWetnessChange();
     }
     private void OnDisable()
     {
         _status.WetnessChanged -= OnWetnessChange;
+        _status.StatusChanged -= OnStatusChange;
     }
 
 }
