@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 712484515141373340}
   - component: {fileID: 712484515141373335}
   - component: {fileID: -584683137749346637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wet Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

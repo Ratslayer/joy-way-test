@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1266481271345273067}
   - component: {fileID: 6676193044209458062}
   - component: {fileID: 6711725333131797548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sun Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 1266481271843349188}
   - component: {fileID: 1266481271843349191}
   - component: {fileID: 1266481271843349190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522042494821876994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7053099346958448637}
   - component: {fileID: 607740053217039347}
   - component: {fileID: 2250103696203009835}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3956,7 +3956,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 55
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

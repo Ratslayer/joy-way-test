@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1266481271345273067}
   - component: {fileID: 6676193044209458062}
   - component: {fileID: 5612086302626490213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Water Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 1266481271843349188}
   - component: {fileID: 1266481271843349191}
   - component: {fileID: 1266481271843349190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522042494821876994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
