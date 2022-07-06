@@ -2,8 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-using UnityEngine.Serialization;
-
+[RequireComponent(typeof(WeaponInteraction))]
 public class EquipmentInventory : MonoBehaviour
 {
     private enum MouseButton
@@ -18,10 +17,10 @@ public class EquipmentInventory : MonoBehaviour
         public MouseButton _mouseButton;
         public Transform _handTransform;
         public AbstractWeapon _weapon;
-        private EquipmentInventory _inventory;
-        public void Init(EquipmentInventory inventory)
+        private WeaponInteraction _interaction;
+        public void Init(WeaponInteraction interaction)
         {
-            _inventory = inventory;
+            _interaction = interaction;
         }
         private ButtonControl AttackButton
             => _mouseButton == MouseButton.Left
@@ -47,9 +46,9 @@ public class EquipmentInventory : MonoBehaviour
                 _weapon.Unequip();
                 _weapon = null;
             }
-            else if (_inventory._targetWeapon)
+            else if (_interaction.CurrentWeapon)
             {
-                _weapon = _inventory._targetWeapon;
+                _weapon = _interaction.CurrentWeapon;
                 _weapon.transform.SetParent(_handTransform, true);
                 _weapon.transform.localPosition = Vector3.zero;
                 _weapon.transform.localRotation = Quaternion.identity;
@@ -58,26 +57,15 @@ public class EquipmentInventory : MonoBehaviour
     }
     [SerializeField]
     private HandData _rightHand, _leftHand;
-    [SerializeField]
-    private Camera _camera;
-    private AbstractWeapon _targetWeapon;
-    private void Start()
+    private WeaponInteraction _interaction;
+    private void Awake()
     {
-        _rightHand.Init(this);
-        _leftHand.Init(this);
+        _interaction = GetComponent<WeaponInteraction>();
+        _rightHand.Init(_interaction);
+        _leftHand.Init(_interaction);
     }
     private void Update()
     {
-        //update target weapon
-        _targetWeapon = null;
-        var hits = Physics.RaycastAll(_camera.transform.position, _camera.transform.forward);
-        foreach (var hit in hits)
-            if (hit.collider.TryGetComponent<AbstractWeapon>(out var weapon))
-            {
-                _targetWeapon = weapon;
-                break;
-            }
-        //update hands
         _rightHand.UpdateWeapon();
         _leftHand.UpdateWeapon();
     }

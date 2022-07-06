@@ -9,6 +9,7 @@ public class WeaponSpawner : MonoBehaviour
     private void Awake()
     {
         _weaponInstance = Instantiate(_weaponPrefab);
+        _weaponInstance.name = _weaponPrefab.name;
         _weaponInstance.Unequipped += OnUnequip;
         OnUnequip();
     }
