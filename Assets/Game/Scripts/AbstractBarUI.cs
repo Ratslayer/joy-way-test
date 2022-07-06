@@ -10,12 +10,17 @@ public abstract class AbstractBarUI : MonoBehaviour
     private TextMeshProUGUI _text;
     [SerializeField]
     private CanvasGroup _hideGroupOnZero;
+    public Image BarImage => _barImage;
     protected void UpdateValues(float value, float maxValue)
     {
         if (_hideGroupOnZero)
             _hideGroupOnZero.alpha = value < Mathf.Epsilon ? 0f : 1f;
         if (_text)
             _text.text = value.ToString("N0");
-        _barImage.fillAmount = value / maxValue;
+        UpdateValues(value / maxValue);
+    }
+    protected virtual void UpdateValues(float factor)
+    {
+        _barImage.fillAmount = factor;
     }
 }
