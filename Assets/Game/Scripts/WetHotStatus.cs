@@ -7,20 +7,8 @@ public class WetHotStatus : MonoBehaviour
     private int _maxWetness = 100;
     [SerializeField]
     private float _maxBurnDuration = 10f;
-
     private float _remainingBurnDuration = 0f;
     private int _currentWetness = 0;
-    //public readonly struct BurnData
-    //{
-    //    public readonly float _tickDuration;
-    //    public readonly float _remainingDuration;
-    //    public BurnData(float tick, float remaining)
-    //    {
-    //        _tickDuration = tick;
-    //        _remainingDuration = remaining;
-    //    }
-    //}
-    //public delegate void BurnDataCallback(in BurnData data);
     public event Action<float> BurnedForDuration;
     public event Action WetnessChanged;
     public int MaxWetness => _maxWetness;

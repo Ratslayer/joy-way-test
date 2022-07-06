@@ -3,7 +3,7 @@
 public class HideModelOnDeath : MonoBehaviour
 {
     [SerializeField]
-    private Transform _modelRoot;
+    private Transform[] _objectsToHide;
     private Health _health;
     private void Awake()
     {
@@ -19,12 +19,17 @@ public class HideModelOnDeath : MonoBehaviour
         _health.HealedToFull -= OnRevive;
         _health.ReachedZero -= OnDeath;
     }
+    private void SetVisibility(bool active)
+    {
+        foreach(var obj in _objectsToHide)
+            obj.gameObject.SetActive(active);
+    }
     private void OnDeath()
     {
-        _modelRoot.gameObject.SetActive(false);
+        SetVisibility(false);
     }
     private void OnRevive()
     {
-        _modelRoot.gameObject.SetActive(true);
+        SetVisibility(true);
     }
 }
