@@ -19,14 +19,14 @@ public class PoolManager : AbstractManager<PoolManager>
                 instance = item;
                 break;
             }
-        if (!instance)
-        {
-            instance = Instantiate(prefab);
-            instances.Add(instance);
-        }
         if (!parent)
             parent = transform;
-        instance.transform.SetParent(parent, true);
+        if (!instance)
+        {
+            instance = Instantiate(prefab, parent);
+            instances.Add(instance);
+        }
+        else instance.transform.SetParent(parent, true);
         instance.SetActive(true);
         return instance;
     }

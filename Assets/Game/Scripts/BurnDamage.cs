@@ -20,5 +20,5 @@ public class BurnDamage : MonoBehaviour
     {
         _status.BurnedForDuration -= DealBurnDamage;
     }
-    private void DealBurnDamage(float duration) => _health.TakeDamage(duration * _damagePerSecond);
+    private void DealBurnDamage(float tick) => _health.TakeDamage(tick * _damagePerSecond, null);
 }

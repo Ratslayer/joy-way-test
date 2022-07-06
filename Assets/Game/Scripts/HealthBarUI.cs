@@ -1,15 +1,9 @@
-﻿using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class HealthBarUI : MonoBehaviour
+﻿using UnityEngine;
+public class HealthBarUI : AbstractBarUI
 {
     [SerializeField]
     private Health _health;
-    [SerializeField]
-    private Image _barImage;
-    [SerializeField]
-    private TextMeshProUGUI _text;
+
     private void OnEnable()
     {
         _health.TookDamage += OnHealthValueChange;
@@ -21,10 +15,6 @@ public class HealthBarUI : MonoBehaviour
         _health.TookDamage -= OnHealthValueChange;
         _health.HealedToFull -= UpdateHealthValues;
     }
-    private void UpdateHealthValues()
-    {
-        _text.text = _health.CurrentHealth.ToString("N0");
-        _barImage.fillAmount = _health.CurrentHealth / _health.MaxHealth;
-    }
-    private void OnHealthValueChange(float amount) => UpdateHealthValues();
+    private void UpdateHealthValues() => UpdateValues(_health.CurrentHealth, _health.MaxHealth);
+    private void OnHealthValueChange(float amount, Collision collision) => UpdateHealthValues();
 }

@@ -17,7 +17,7 @@ public class Bullet : AbstractProjectile
                     Status.Wet => -_damageAmplification,
                     _ => 0
                 };
-            health.TakeDamage(damage);
+            health.TakeDamage(damage, collision);
         }
     }
 }
