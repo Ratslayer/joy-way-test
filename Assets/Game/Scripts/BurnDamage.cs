@@ -7,6 +7,7 @@ public class BurnDamage : MonoBehaviour
     private float _damagePerSecond = 5f;
     private Health _health;
     private WetHotStatus _status;
+    private float _elapsedBurnDuration;
     private void Awake()
     {
         _health = GetComponent<Health>();
@@ -20,5 +21,13 @@ public class BurnDamage : MonoBehaviour
     {
         _status.BurnedForDuration -= DealBurnDamage;
     }
-    private void DealBurnDamage(float tick) => _health.TakeDamage(tick * _damagePerSecond, null);
+    private void DealBurnDamage(float tick)
+    {
+        _elapsedBurnDuration += tick;
+        if(_elapsedBurnDuration>1f)
+        {
+            _health.TakeDamage(_damagePerSecond, null);
+            _elapsedBurnDuration -= 1f;
+        }
+    }
 }
