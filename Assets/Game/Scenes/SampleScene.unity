@@ -356,8 +356,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281545537
-  m_fontColor: {r: 0.254717, g: 0.20064971, b: 0.20064971, a: 1}
+    rgba: 4279769114
+  m_fontColor: {r: 0.103773594, g: 0.09545213, b: 0.09545213, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -935,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.885
+      value: 1.0407
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1439,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.499
+      value: -0.34530002
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2186,7 +2186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.19
+      value: 0.34570003
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2618,7 +2618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.197
+      value: -1.0413
       objectReference: {fileID: 0}
     - target: {fileID: 6641759880709520175, guid: a125370624485e340acbcaa4cceccc20, type: 3}
       propertyPath: m_LocalRotation.w
