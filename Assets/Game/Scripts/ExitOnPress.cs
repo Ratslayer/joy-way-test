@@ -8,10 +8,12 @@ public class ExitOnPress : MonoBehaviour
     private void Update()
     {
         if (Keyboard.current[_key].wasPressedThisFrame)
+        {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;                    
 #else
             Application.Quit();
 #endif
+        }
     }
 }
