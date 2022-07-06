@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using static WetHotStatus;
+//basic bullet that deals damage on collision
+//deals more damage to burning targets and less to wet ones
 public class DamageProjectile : AbstractProjectile
 {
     [SerializeField]
@@ -17,7 +19,7 @@ public class DamageProjectile : AbstractProjectile
                     Status.Wet => -_damageAmplification,
                     _ => 0
                 };
-            health.TakeDamage(damage, collision);
+            health.TakeDamage(damage);
         }
     }
 }

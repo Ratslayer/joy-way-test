@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+//base class for all particle colliders
 [RequireComponent(typeof(ParticleSystem))]
 public abstract class AbstractParticleCollider : MonoBehaviour
 {

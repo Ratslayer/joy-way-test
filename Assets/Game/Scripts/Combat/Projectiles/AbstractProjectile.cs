@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+//base class for all projectiles
+//controls spawn velocity and default collision behaviour
 [RequireComponent(typeof(Rigidbody))]
 public abstract class AbstractProjectile : MonoBehaviour
 {
     [SerializeField]
-    private float _impulse = 10f, _lifeTime = 3f;
+    private float _speed = 10f, _lifeTime = 3f;
     private Rigidbody _rigidBody;
     private void Awake()
     {
@@ -13,7 +15,7 @@ public abstract class AbstractProjectile : MonoBehaviour
     public void Shoot(Transform muzzle)
     {
         transform.position = muzzle.position;
-        _rigidBody.velocity = muzzle.forward * _impulse;
+        _rigidBody.velocity = muzzle.forward * _speed;
         StartCoroutine(DespawnCoroutine());
     }
     private IEnumerator DespawnCoroutine()

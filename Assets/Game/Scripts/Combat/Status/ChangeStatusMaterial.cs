@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using static WetHotStatus;
+//changes renderer material depending on its status
 [RequireComponent(typeof(WetHotStatus))]
 public class ChangeStatusMaterial : MonoBehaviour
 {
@@ -8,6 +9,17 @@ public class ChangeStatusMaterial : MonoBehaviour
     [SerializeField]
     private Renderer _renderer;
     private WetHotStatus _status;
+    private void SetMaterial(Material material) => _renderer.sharedMaterial = material;
+    private void OnStatusChange(Status status)
+    {
+        var material = status switch
+        {
+            Status.Burning => _burningMaterial,
+            Status.Wet => _wetMaterial,
+            _ => _defaultMaterial
+        };
+        SetMaterial(material);
+    }
     private void Awake()
     {
         _status = GetComponent<WetHotStatus>();
@@ -21,15 +33,4 @@ public class ChangeStatusMaterial : MonoBehaviour
     {
         _status.StatusChanged -= OnStatusChange;
     }
-    private void OnStatusChange(Status status)
-    {
-        var material = status switch
-        {
-            Status.Burning => _burningMaterial,
-            Status.Wet => _wetMaterial,
-            _ => _defaultMaterial
-        };
-        SetMaterial(material);
-    }
-    private void SetMaterial(Material material) => _renderer.sharedMaterial = material;
 }

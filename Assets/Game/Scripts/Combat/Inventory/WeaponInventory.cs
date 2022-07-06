@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+//keeps track of which weapons we have equipped
+//equips/drops weapons on button press
+//shoots weapons on mouse presses
 [RequireComponent(typeof(WeaponInteraction))]
 public class WeaponInventory : MonoBehaviour
 {
@@ -10,12 +13,17 @@ public class WeaponInventory : MonoBehaviour
         Left,
         Right
     }
+    //holds all data related to any given hand
     [Serializable]
     private class HandData
     {
+        //key used to equip/drop weapon into this hand
         public Key _equipKey;
+        //mouse button used to start/stop shooting this weapon
         public MouseButton _mouseButton;
+        //where will the weapon model be positioned
         public Transform _handTransform;
+        //currently equipped weapon
         public AbstractWeapon _weapon;
         private WeaponInteraction _interaction;
         public void Init(WeaponInteraction interaction)
@@ -25,10 +33,10 @@ public class WeaponInventory : MonoBehaviour
         private ButtonControl AttackButton
             => _mouseButton == MouseButton.Left
                 ? Mouse.current.leftButton : Mouse.current.rightButton;
-        public void UpdateWeapon()
+        public void OnUpdate()
         {
             if (Keyboard.current[_equipKey].wasPressedThisFrame)
-                EquipWeapon();
+                ToggleEquipWeapon();
             if (_weapon)
             {
                 var button = AttackButton;
@@ -38,7 +46,7 @@ public class WeaponInventory : MonoBehaviour
                     _weapon.EndAttack();
             }
         }
-        private void EquipWeapon()
+        private void ToggleEquipWeapon()
         {
             if (_weapon)
             {
@@ -66,8 +74,7 @@ public class WeaponInventory : MonoBehaviour
     }
     private void Update()
     {
-        _rightHand.UpdateWeapon();
-        _leftHand.UpdateWeapon();
+        _rightHand.OnUpdate();
+        _leftHand.OnUpdate();
     }
-
 }

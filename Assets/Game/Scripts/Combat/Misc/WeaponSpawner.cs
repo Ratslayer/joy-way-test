@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+//spawns weapon on awake from given prefab
+//snaps weapon to its creation place on unequip
 public class WeaponSpawner : MonoBehaviour
 {
     [SerializeField]

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+//move is controlled by a composite vector input (WASD)
+//so I need to define it in an actions asset
+//everywhere else I subscribe to input (mouse/keyboard) directly for simplicity's sake
 [RequireComponent(typeof(CharacterController))]
 public class MovementController : MonoBehaviour
 {
@@ -16,6 +19,16 @@ public class MovementController : MonoBehaviour
     private CharacterController _characterController;
     private Vector3 _moveInputDir;
     private InputAction _moveAction;
+    //called on input change only
+    private void Move(CallbackContext context)
+    {
+        var moveInput = context.ReadValue<Vector2>();
+        _moveInputDir = transform.forward * moveInput.y + transform.right * moveInput.x;
+    }
+    private void Update()
+    {
+        _characterController.Move(_moveInputDir * _moveSpeed * Time.deltaTime);
+    }
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -33,13 +46,6 @@ public class MovementController : MonoBehaviour
         _moveAction.performed -= Move;
         _moveAction.canceled -= Move;
     }
-    private void Update()
-    {
-        _characterController.Move(_moveInputDir * _moveSpeed * Time.deltaTime);
-    }
-    private void Move(CallbackContext context)
-    {
-        var moveInput = context.ReadValue<Vector2>();
-        _moveInputDir = transform.forward * moveInput.y + transform.right * moveInput.x;
-    }
+    
+    
 }

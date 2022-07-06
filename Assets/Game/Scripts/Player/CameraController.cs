@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
@@ -21,8 +20,9 @@ public class CameraController : MonoBehaviour
         if (newPitch > 180)
             newPitch -= 360;
         var pitch = Mathf.Clamp(newPitch, -85, 85);
-
+        //pitch moves head only
         _cameraTransform.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        //yaw moves whole body
         transform.localEulerAngles += Vector3.up * lookInput.x * _lookSpeed;
     }
 }

@@ -22,5 +22,5 @@ public class HealthBarUI : AbstractBarUI
         BarImage.color = _healthGradient.Evaluate(factor);
     }
     private void UpdateHealthValues() => UpdateValues(_health.CurrentHealth, _health.MaxHealth);
-    private void OnHealthValueChange(float amount, Collision collision) => UpdateHealthValues();
+    private void OnHealthValueChange(float amount) => UpdateHealthValues();
 }

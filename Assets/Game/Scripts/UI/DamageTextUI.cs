@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+//raises damage text up and fades it over time
 public class DamageTextUI : MonoBehaviour
 {
     [SerializeField]

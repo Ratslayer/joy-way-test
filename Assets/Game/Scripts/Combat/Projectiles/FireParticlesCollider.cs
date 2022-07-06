@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BurningStream : AbstractParticleCollider
+public class FireParticlesCollider : AbstractParticleCollider
 {
     [SerializeField]
     private int _hotnessPerParticle = 1;

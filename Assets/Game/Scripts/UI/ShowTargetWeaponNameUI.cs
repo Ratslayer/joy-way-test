@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
-
-public class WeaponNameUI : MonoBehaviour
+//shows which weapon we are looking at right now
+public class ShowTargetWeaponNameUI : MonoBehaviour
 {
     [SerializeField]
     private WeaponInteraction _interaction;

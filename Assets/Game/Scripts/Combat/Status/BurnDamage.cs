@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+//deals fire damage based on elapsed burn duration
+//deals damage in 1 second intervals
 [RequireComponent(typeof(WetHotStatus), typeof(Health))]
 public class BurnDamage : MonoBehaviour
 {
@@ -24,9 +25,9 @@ public class BurnDamage : MonoBehaviour
     private void DealBurnDamage(float tick)
     {
         _elapsedBurnDuration += tick;
-        if(_elapsedBurnDuration>1f)
+        if (_elapsedBurnDuration > 1f)
         {
-            _health.TakeDamage(_damagePerSecond, null);
+            _health.TakeDamage(_damagePerSecond);
             _elapsedBurnDuration -= 1f;
         }
     }

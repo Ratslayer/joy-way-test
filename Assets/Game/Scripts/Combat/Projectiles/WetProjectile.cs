@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-public class StatusProjectile : AbstractProjectile
+public class WetProjectile : AbstractProjectile
 {
     [SerializeField]
     private int _wetness = 0;

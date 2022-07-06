@@ -1,7 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+//base class for all ui bars in game
+//controls value text (if available) and image fill amount
 public abstract class AbstractBarUI : MonoBehaviour
 {
     [SerializeField]
@@ -21,6 +22,7 @@ public abstract class AbstractBarUI : MonoBehaviour
     }
     protected virtual void UpdateValues(float factor)
     {
-        _barImage.fillAmount = factor;
+        if (_barImage)
+            _barImage.fillAmount = factor;
     }
 }
