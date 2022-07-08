@@ -2798,9 +2798,11 @@ GameObject:
   - component: {fileID: 2083756162}
   - component: {fileID: 2083756156}
   - component: {fileID: 2083756163}
+  - component: {fileID: 2083756157}
   - component: {fileID: 2083756159}
   - component: {fileID: 2083756160}
   - component: {fileID: 2083756161}
+  - component: {fileID: 2083756164}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -2826,6 +2828,18 @@ MonoBehaviour:
   - {fileID: 1734983390}
   _groups:
   - {fileID: 525429411}
+--- !u!114 &2083756157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083756155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c61690dd8f85264ea08fefe080db94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2083756158
 Transform:
   m_ObjectHideFlags: 0
@@ -2883,9 +2897,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c995fb3fba72f4d939289262928af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterStatusContainer: {fileID: 2083756157}
   _defaultMaterial: {fileID: 2100000, guid: 822ac71416790414184a7c8095b215fd, type: 2}
-  _wetMaterial: {fileID: 2100000, guid: f59179c360f6a4248976fb1c9c18b7e7, type: 2}
-  _burningMaterial: {fileID: 2100000, guid: 72460958e204fe848b1d4cc340b72643, type: 2}
+  _materialDatas:
+  - _status: {fileID: 11400000, guid: 4b6b641cfa9a0dc42b1d79e363103648, type: 2}
+    _material: {fileID: 2100000, guid: f59179c360f6a4248976fb1c9c18b7e7, type: 2}
+  - _status: {fileID: 11400000, guid: 8675ca2561a677945a8f35b67ba1a7fc, type: 2}
+    _material: {fileID: 2100000, guid: 72460958e204fe848b1d4cc340b72643, type: 2}
   _renderer: {fileID: 1734983393}
 --- !u!114 &2083756162
 MonoBehaviour:
@@ -2921,6 +2939,22 @@ MonoBehaviour:
   _fullHealKey: 32
   _resourceContainer: {fileID: 2083756162}
   _resource: {fileID: 11400000, guid: 8f92fafe23deede488ac2dafd637a26f, type: 2}
+--- !u!114 &2083756164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083756155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a55a7a3be4af24db99df8cab106371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterResourceContainer: {fileID: 2083756162}
+  _characterStatusContainer: {fileID: 2083756157}
+  _resource: {fileID: 11400000, guid: 0b0e41c64a694864594076eae78bfbb4, type: 2}
+  _status: {fileID: 11400000, guid: 4b6b641cfa9a0dc42b1d79e363103648, type: 2}
 --- !u!1001 &3494453839404154591
 PrefabInstance:
   m_ObjectHideFlags: 0

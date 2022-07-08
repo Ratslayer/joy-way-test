@@ -3,7 +3,6 @@ using UnityEngine;
 //keeps track of current status
 //controls the rules for status change (max wetness and burn duration)
 //clears all statuses on revive
-//[RequireComponent(typeof(Health))]
 public class WetHotStatus : MonoBehaviour
 {
     [SerializeField]

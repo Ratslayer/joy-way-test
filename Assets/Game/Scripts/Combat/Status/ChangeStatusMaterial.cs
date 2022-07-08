@@ -1,36 +1,46 @@
-﻿using UnityEngine;
-using static WetHotStatus;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 //changes renderer material depending on its status
-[RequireComponent(typeof(WetHotStatus))]
 public class ChangeStatusMaterial : MonoBehaviour
 {
+    [Serializable]
+    private class StatusMaterial
+    {
+        public CharacterStatus _status;
+        public Material _material;
+    }
     [SerializeField]
-    private Material _defaultMaterial, _wetMaterial, _burningMaterial;
+    private CharacterStatusContainer _characterStatusContainer;
+    [SerializeField]
+    private Material _defaultMaterial;
+    [SerializeField]
+    private List<StatusMaterial> _materialDatas = new List<StatusMaterial>();
     [SerializeField]
     private Renderer _renderer;
-    private WetHotStatus _status;
     private void SetMaterial(Material material) => _renderer.sharedMaterial = material;
-    private void OnStatusChange(Status status)
+    private void OnStatusChange(CharacterStatus status)
     {
-        var material = status switch
-        {
-            Status.Burning => _burningMaterial,
-            Status.Wet => _wetMaterial,
-            _ => _defaultMaterial
-        };
-        SetMaterial(material);
+        foreach (var data in _materialDatas)
+            if (_characterStatusContainer.HasStatus(data._status))
+            {
+                SetMaterial(data._material);
+                return;
+            }
+        SetMaterial(_defaultMaterial);
     }
     private void Awake()
     {
-        _status = GetComponent<WetHotStatus>();
         SetMaterial(_defaultMaterial);
     }
     private void OnEnable()
     {
-        _status.StatusChanged += OnStatusChange;
+        _characterStatusContainer.StatusGained += OnStatusChange;
+        _characterStatusContainer.StatusLost += OnStatusChange;
     }
     private void OnDisable()
     {
-        _status.StatusChanged -= OnStatusChange;
+        _characterStatusContainer.StatusGained -= OnStatusChange;
+        _characterStatusContainer.StatusLost -= OnStatusChange;
     }
 }

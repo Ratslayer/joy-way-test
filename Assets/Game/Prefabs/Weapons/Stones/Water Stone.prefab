@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzleTransform: {fileID: 4522042494821876994}
-  _projectilePrefab: {fileID: -584683137749346637, guid: b36450efd58ba434086ca0142c747881, type: 3}
+  _projectilePrefab: {fileID: 419371589385585165, guid: b36450efd58ba434086ca0142c747881, type: 3}
 --- !u!1 &1266481271843349195
 GameObject:
   m_ObjectHideFlags: 0
