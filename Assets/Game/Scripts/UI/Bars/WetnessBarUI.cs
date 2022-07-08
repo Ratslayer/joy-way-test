@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using static WetHotStatus;
-public class WetnessBarUI : AbstractBarUI
+public class WetnessBarUI : BarUI
 {
     [SerializeField]
     private WetHotStatus _status;

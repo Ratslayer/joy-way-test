@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 //base class for all ui bars in game
 //controls value text (if available) and image fill amount
-public abstract class AbstractBarUI : MonoBehaviour
+public class BarUI : MonoBehaviour
 {
     [SerializeField]
     private Image _barImage;
@@ -11,18 +11,21 @@ public abstract class AbstractBarUI : MonoBehaviour
     private TextMeshProUGUI _text;
     [SerializeField]
     private CanvasGroup _hideGroupOnZero;
-    public Image BarImage => _barImage;
-    protected void UpdateValues(float value, float maxValue)
+    [SerializeField]
+    private bool _hideOnZero;
+    [SerializeField]
+    private Gradient _colorGradient;
+    public void UpdateValues(float value, float maxValue)
     {
-        if (_hideGroupOnZero)
+        if (_hideGroupOnZero && _hideOnZero)
             _hideGroupOnZero.alpha = value < Mathf.Epsilon ? 0f : 1f;
         if (_text)
             _text.text = value.ToString("N0");
-        UpdateValues(value / maxValue);
-    }
-    protected virtual void UpdateValues(float factor)
-    {
         if (_barImage)
+        {
+            var factor = value / maxValue;
             _barImage.fillAmount = factor;
+            _barImage.color = _colorGradient.Evaluate(factor);
+        }
     }
 }

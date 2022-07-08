@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BurnBarUI : AbstractBarUI
+public class BurnBarUI : BarUI
 {
     [SerializeField]
     private WetHotStatus _status;

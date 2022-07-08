@@ -5,10 +5,12 @@ using static WetHotStatus;
 public class DamageProjectile : AbstractProjectile
 {
     [SerializeField]
+    private CharacterResource _resource;
+    [SerializeField]
     private float _damage = 20, _damageAmplification = 10f;
     protected override void OnHit(Transform root, Collision collision)
     {
-        if (root.TryGetComponent(out Health health))
+        if (root.TryGetComponent(out CharacterResourceContainer resourceContainer))
         {
             var damage = _damage;
             //apply status damage amplification
@@ -19,7 +21,7 @@ public class DamageProjectile : AbstractProjectile
                     Status.Wet => -_damageAmplification,
                     _ => 0
                 };
-            health.TakeDamage(damage);
+            resourceContainer.AddValue(_resource, -damage);
         }
     }
 }
