@@ -19,6 +19,7 @@ public class ChangeStatusMaterial : MonoBehaviour
     [SerializeField]
     private Renderer _renderer;
     private void SetMaterial(Material material) => _renderer.sharedMaterial = material;
+    private void OnStatusChange(in CharacterStatusContainer.StatusGainedContext context) => OnStatusChange(context._status);
     private void OnStatusChange(CharacterStatus status)
     {
         foreach (var data in _materialDatas)

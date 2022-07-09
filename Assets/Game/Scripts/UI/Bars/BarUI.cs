@@ -28,4 +28,14 @@ public class BarUI : MonoBehaviour
             _barImage.color = _colorGradient.Evaluate(factor);
         }
     }
+    public void Hide()
+    {
+        if (_hideGroupOnZero)
+            _hideGroupOnZero.alpha = 0f;
+    }
+    public void Show()
+    {
+        if (_hideGroupOnZero)
+            _hideGroupOnZero.alpha = 1f;
+    }
 }

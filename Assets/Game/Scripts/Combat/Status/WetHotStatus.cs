@@ -107,5 +107,4 @@ public class WetHotStatus : MonoBehaviour
     }
     private void StopBurn() => _remainingBurnDuration = 0f;
     private void UpdateBurnDuration() => _remainingBurnDuration = _maxBurnDuration;
-
 }

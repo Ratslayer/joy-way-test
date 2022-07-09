@@ -4989,4 +4989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ba5eeebcd51eb4197c4f362611c0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hotnessPerParticle: 1
+  _resourceValues:
+  - _resource: {fileID: 11400000, guid: 0b0e41c64a694864594076eae78bfbb4, type: 2}
+    _value: -1
+  - _resource: {fileID: 11400000, guid: 8f92fafe23deede488ac2dafd637a26f, type: 2}
+    _value: -1
+  _burningStatus: {fileID: 11400000, guid: 8675ca2561a677945a8f35b67ba1a7fc, type: 2}
+  _wetStatus: {fileID: 11400000, guid: 4b6b641cfa9a0dc42b1d79e363103648, type: 2}
+  _burnDuration: 10
